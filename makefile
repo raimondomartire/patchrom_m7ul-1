@@ -6,7 +6,7 @@
 local-zip-file := stockrom.zip
 
 # The output zip file of MIUI rom, the default is porting_miui.zip if not specified
-local-out-zip-file := MIUI_i9100.zip
+local-out-zip-file := MIUI_m7ul.zip
 
 # the location for local-ota to save target-file
 #local-previous-target-dir := ~/workspace/ota_base/i9100_4.1
@@ -25,8 +25,7 @@ local-miui-removed-apps := MediaProvider Stk
 # Default configrations are HDPI for ics branch and XHDPI for jellybean branch
 local-density := XHDPI
 
-local-phone-apps = com.htc.socialnetwork.res framework-htc-res com.htc.resources com.htc.videowidget.res com.htc.browsermodule.res com.htc.weather.res \
- YouTube iWnnIME VideoEditorGoogle TagGoogle Phonesky GenieWidget GoogleFeedback talkback PartnerBookmarksProvider Videos \
+local-phone-apps = YouTube iWnnIME VideoEditorGoogle TagGoogle Phonesky GenieWidget GoogleFeedback talkback PartnerBookmarksProvider Videos \
 GoogleKeep Music2 GooglePinyinIME SunBeam GmsCore GalleryGoogle VoiceSearchStub OneTimeInitializer MediaUploader \
 PrivInit Hindi Books BrcmBluetoothServices KoreanIME Chrome GoogleTTS iWnnIME_Kbd_White CalendarGoogle BrowserProviderProxy Hangouts \
 InputDevices GMS_Maps Magazines PlusOne Street OccamQuickOffice LatinImeDictionaryPack SetupWizard \
@@ -37,8 +36,8 @@ include phoneapps.mk
 # and the local-targets should:
 # (1) be defined after including porting.mk if using any global variable(see porting.mk)
 # (2) the name should be leaded with local- to prevent any conflict with global targets
-local-pre-zip := local-pre-zip-misc
-local-after-zip:= local-put-to-phone
+#local-pre-zip := local-pre-zip-misc
+#local-after-zip:= local-put-to-phone
 
 # The local targets after the zip file is generated, could include 'zip2sd' to 
 # deliver the zip file to phone, or to customize other actions
