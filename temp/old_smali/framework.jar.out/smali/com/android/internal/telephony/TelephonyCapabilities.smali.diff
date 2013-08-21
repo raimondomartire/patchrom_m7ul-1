@@ -1,0 +1,24 @@
+*** ./smali/com/android/internal/telephony/TelephonyCapabilities.smali	2013-08-21 11:30:19.846906102 -0700
+--- /home/adit/patchrom/m7ul/temp/new_smali/framework.jar.out/./smali/com/android/internal/telephony/TelephonyCapabilities.smali	2013-08-21 11:29:16.127862759 -0700
+***************
+*** 8,15 ****
+  
+  
+  # direct methods
+! .method private constructor <init>()V
+      .locals 0
+  
+      .prologue
+      invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+--- 8,18 ----
+  
+  
+  # direct methods
+! .method protected constructor <init>()V
+      .locals 0
++     .annotation build Landroid/annotation/MiuiHook;
++         value = .enum Landroid/annotation/MiuiHook$MiuiHookType;->CHANGE_ACCESS:Landroid/annotation/MiuiHook$MiuiHookType;
++     .end annotation
+  
+      .prologue
+      invoke-direct {p0}, Ljava/lang/Object;-><init>()V

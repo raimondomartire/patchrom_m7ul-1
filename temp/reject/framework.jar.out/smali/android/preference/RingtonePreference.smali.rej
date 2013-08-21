@@ -1,0 +1,41 @@
+*** RingtonePreference.smali	2013-08-21 11:29:44.297586794 -0700
+--- RingtonePreference.smali	2013-08-21 11:28:43.852138317 -0700
+***************
+*** 258,263 ****
+  .method protected onPrepareRingtonePickerIntent(Landroid/content/Intent;)V
+      .locals 2
+      .parameter "ringtonePickerIntent"
+  
+      .prologue
+      const-string v0, "android.intent.extra.ringtone.EXISTING_URI"
+--- 258,266 ----
+  .method protected onPrepareRingtonePickerIntent(Landroid/content/Intent;)V
+      .locals 2
+      .parameter "ringtonePickerIntent"
++     .annotation build Landroid/annotation/MiuiHook;
++         value = .enum Landroid/annotation/MiuiHook$MiuiHookType;->CHANGE_CODE:Landroid/annotation/MiuiHook$MiuiHookType;
++     .end annotation
+  
+      .prologue
+      const-string v0, "android.intent.extra.ringtone.EXISTING_URI"
+***************
+*** 311,316 ****
+  
+      invoke-virtual {p1, v0, v1}, Landroid/content/Intent;->putExtra(Ljava/lang/String;Ljava/lang/CharSequence;)Landroid/content/Intent;
+  
+      return-void
+  .end method
+  
+--- 314,325 ----
+  
+      invoke-virtual {p1, v0, v1}, Landroid/content/Intent;->putExtra(Ljava/lang/String;Ljava/lang/CharSequence;)Landroid/content/Intent;
+  
++     const-string v0, "com.android.thememanager"
++ 
++     const-string v1, "com.android.thememanager.activity.ThemeTabActivity"
++ 
++     invoke-virtual {p1, v0, v1}, Landroid/content/Intent;->setClassName(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
++ 
+      return-void
+  .end method
+  

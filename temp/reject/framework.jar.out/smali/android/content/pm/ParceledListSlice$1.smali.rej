@@ -1,0 +1,20 @@
+*** ParceledListSlice$1.smali	2013-08-21 11:29:42.400662630 -0700
+--- ParceledListSlice$1.smali	2013-08-21 11:28:41.342915846 -0700
+***************
+*** 112,117 ****
+  
+      invoke-direct {v5}, Landroid/content/pm/ParceledListSlice;-><init>()V
+  
+      goto :goto_1
+  .end method
+  
+--- 112,120 ----
+  
+      invoke-direct {v5}, Landroid/content/pm/ParceledListSlice;-><init>()V
+  
++     .local v5, list:Landroid/content/pm/ParceledListSlice;
++     invoke-virtual {v5, v0}, Landroid/content/pm/ParceledListSlice;->setLastSlice(Z)V
++ 
+      goto :goto_1
+  .end method
+  

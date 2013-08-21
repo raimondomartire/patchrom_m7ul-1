@@ -1,0 +1,19 @@
+*** ScrollingTabContainerView$TabClickListener.smali	2013-08-21 11:30:17.777898100 -0700
+--- ScrollingTabContainerView$TabClickListener.smali	2013-08-21 11:29:13.854755321 -0700
+***************
+*** 111,115 ****
+  
+      .end local v0           #child:Landroid/view/View;
+      :cond_1
+      return-void
+  .end method
+--- 111,119 ----
+  
+      .end local v0           #child:Landroid/view/View;
+      :cond_1
++     iget-object v4, p0, Lcom/android/internal/widget/ScrollingTabContainerView$TabClickListener;->this$0:Lcom/android/internal/widget/ScrollingTabContainerView;
++ 
++     invoke-static {v4, p1}, Lcom/android/internal/widget/ScrollingTabContainerView$Injector;->onTabViewClick(Lcom/android/internal/widget/ScrollingTabContainerView;Landroid/view/View;)V
++ 
+      return-void
+  .end method

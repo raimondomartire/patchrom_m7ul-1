@@ -1,0 +1,41 @@
+*** NinePatchDrawable.smali	2013-08-21 11:29:54.710659950 -0700
+--- NinePatchDrawable.smali	2013-08-21 11:28:52.892542720 -0700
+***************
+*** 218,223 ****
+  
+  .method private computeBitmapSize()V
+      .locals 5
+  
+      .prologue
+      iget-object v4, p0, Landroid/graphics/drawable/NinePatchDrawable;->mNinePatch:Landroid/graphics/NinePatch;
+--- 218,226 ----
+  
+  .method private computeBitmapSize()V
+      .locals 5
++     .annotation build Landroid/annotation/MiuiHook;
++         value = .enum Landroid/annotation/MiuiHook$MiuiHookType;->CHANGE_CODE:Landroid/annotation/MiuiHook$MiuiHookType;
++     .end annotation
+  
+      .prologue
+      iget-object v4, p0, Landroid/graphics/drawable/NinePatchDrawable;->mNinePatch:Landroid/graphics/NinePatch;
+***************
+*** 254,259 ****
+  
+      iput-object v4, p0, Landroid/graphics/drawable/NinePatchDrawable;->mLayoutInsets:Landroid/graphics/Insets;
+  
+      :goto_0
+      return-void
+  
+--- 257,268 ----
+  
+      iput-object v4, p0, Landroid/graphics/drawable/NinePatchDrawable;->mLayoutInsets:Landroid/graphics/Insets;
+  
++     iget-object v4, p0, Landroid/graphics/drawable/NinePatchDrawable;->mNinePatchState:Landroid/graphics/drawable/NinePatchDrawable$NinePatchState;
++ 
++     iget-object v4, v4, Landroid/graphics/drawable/NinePatchDrawable$NinePatchState;->mPadding:Landroid/graphics/Rect;
++ 
++     iput-object v4, p0, Landroid/graphics/drawable/NinePatchDrawable;->mPadding:Landroid/graphics/Rect;
++ 
+      :goto_0
+      return-void
+  

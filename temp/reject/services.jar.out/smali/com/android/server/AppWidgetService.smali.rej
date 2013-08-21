@@ -1,0 +1,55 @@
+*** AppWidgetService.smali	2013-08-21 11:30:27.394583263 -0700
+--- AppWidgetService.smali	2013-08-21 11:29:24.828101437 -0700
+***************
+*** 9,15 ****
+          Lcom/android/server/AppWidgetService$ServiceConnectionProxy;,
+          Lcom/android/server/AppWidgetService$AppWidgetId;,
+          Lcom/android/server/AppWidgetService$Host;,
+!         Lcom/android/server/AppWidgetService$Provider;
+      }
+  .end annotation
+  
+--- 9,16 ----
+          Lcom/android/server/AppWidgetService$ServiceConnectionProxy;,
+          Lcom/android/server/AppWidgetService$AppWidgetId;,
+          Lcom/android/server/AppWidgetService$Host;,
+!         Lcom/android/server/AppWidgetService$Provider;,
+!         Lcom/android/server/AppWidgetService$Injector;
+      }
+  .end annotation
+  
+***************
+*** 720,725 ****
+  .method public systemReady(Z)V
+      .locals 8
+      .parameter "safeMode"
+  
+      .prologue
+      const/4 v7, 0x0
+--- 721,729 ----
+  .method public systemReady(Z)V
+      .locals 8
+      .parameter "safeMode"
++     .annotation build Landroid/annotation/MiuiHook;
++         value = .enum Landroid/annotation/MiuiHook$MiuiHookType;->CHANGE_CODE:Landroid/annotation/MiuiHook$MiuiHookType;
++     .end annotation
+  
+      .prologue
+      const/4 v7, 0x0
+***************
+*** 738,743 ****
+  
+      invoke-virtual {v3, p1}, Lcom/android/server/AppWidgetServiceImpl;->systemReady(Z)V
+  
+      iget-object v3, p0, Lcom/android/server/AppWidgetService;->mContext:Landroid/content/Context;
+  
+      iget-object v4, p0, Lcom/android/server/AppWidgetService;->mBroadcastReceiver:Landroid/content/BroadcastReceiver;
+--- 742,749 ----
+  
+      invoke-virtual {v3, p1}, Lcom/android/server/AppWidgetServiceImpl;->systemReady(Z)V
+  
++     invoke-static {p0}, Lcom/android/server/AppWidgetService$Injector;->receiveRestoreFinish(Lcom/android/server/AppWidgetService;)V
++ 
+      iget-object v3, p0, Lcom/android/server/AppWidgetService;->mContext:Landroid/content/Context;
+  
+      iget-object v4, p0, Lcom/android/server/AppWidgetService;->mBroadcastReceiver:Landroid/content/BroadcastReceiver;

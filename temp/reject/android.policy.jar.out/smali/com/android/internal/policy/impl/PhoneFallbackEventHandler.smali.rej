@@ -1,0 +1,62 @@
+*** PhoneFallbackEventHandler.smali	2013-08-21 11:29:29.118191530 -0700
+--- PhoneFallbackEventHandler.smali	2013-08-21 11:28:22.129555270 -0700
+***************
+*** 253,258 ****
+      return-object v0
+  .end method
+  
+  .method onKeyDown(ILandroid/view/KeyEvent;)Z
+      .locals 9
+      .parameter "keyCode"
+--- 253,268 ----
+      return-object v0
+  .end method
+  
++ .method handleCameraKeyEvent()V
++     .locals 0
++     .annotation build Landroid/annotation/MiuiHook;
++         value = .enum Landroid/annotation/MiuiHook$MiuiHookType;->NEW_METHOD:Landroid/annotation/MiuiHook$MiuiHookType;
++     .end annotation
++ 
++     .prologue
++     return-void
++ .end method
++ 
+  .method onKeyDown(ILandroid/view/KeyEvent;)Z
+      .locals 9
+      .parameter "keyCode"
+***************
+*** 570,575 ****
+      .locals 5
+      .parameter "keyCode"
+      .parameter "event"
+  
+      .prologue
+      const/4 v2, 0x1
+--- 580,588 ----
+      .locals 5
+      .parameter "keyCode"
+      .parameter "event"
++     .annotation build Landroid/annotation/MiuiHook;
++         value = .enum Landroid/annotation/MiuiHook$MiuiHookType;->CHANGE_CODE:Landroid/annotation/MiuiHook$MiuiHookType;
++     .end annotation
+  
+      .prologue
+      const/4 v2, 0x1
+***************
+*** 654,659 ****
+  
+      if-nez v3, :cond_2
+  
+      goto :goto_0
+  
+      :sswitch_3
+--- 667,674 ----
+  
+      if-nez v3, :cond_2
+  
++     invoke-virtual {p0}, Lcom/android/internal/policy/impl/PhoneFallbackEventHandler;->handleCameraKeyEvent()V
++ 
+      goto :goto_0
+  
+      :sswitch_3

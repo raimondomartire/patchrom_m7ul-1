@@ -1,0 +1,23 @@
+*** ProgressDialog.smali	2013-08-21 11:30:14.864478709 -0700
+--- ProgressDialog.smali	2013-08-21 11:29:11.041384673 -0700
+***************
+*** 641,646 ****
+  
+      invoke-virtual {p0, v2}, Landroid/app/ProgressDialog;->setView(Landroid/view/View;)V
+  
+      goto :goto_0
+  .end method
+  
+--- 641,652 ----
+  
+      invoke-virtual {p0, v2}, Landroid/app/ProgressDialog;->setView(Landroid/view/View;)V
+  
++     iget-object v3, p0, Landroid/app/ProgressDialog;->mContext:Landroid/content/Context;
++ 
++     iget-object v4, p0, Landroid/app/ProgressDialog;->mMessageView:Landroid/widget/TextView;
++ 
++     invoke-static {p0, v3, v4}, Landroid/app/ProgressDialog$Injector;->usingV5Style(Landroid/app/ProgressDialog;Landroid/content/Context;Landroid/widget/TextView;)V
++ 
+      goto :goto_0
+  .end method
+  

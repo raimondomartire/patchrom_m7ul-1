@@ -1,0 +1,19 @@
+*** InputMethodManager.smali	2013-08-21 11:29:49.628183813 -0700
+--- InputMethodManager.smali	2013-08-21 11:28:48.634468225 -0700
+***************
+*** 3352,3357 ****
+      iput-object v1, p0, Landroid/view/inputmethod/InputMethodManager;->mCurMethod:Lcom/android/internal/view/IInputMethodSession;
+  
+      :cond_7
+      iget-object v1, p0, Landroid/view/inputmethod/InputMethodManager;->mCurMethod:Lcom/android/internal/view/IInputMethodSession;
+  
+      if-eqz v1, :cond_8
+--- 3352,3359 ----
+      iput-object v1, p0, Landroid/view/inputmethod/InputMethodManager;->mCurMethod:Lcom/android/internal/view/IInputMethodSession;
+  
+      :cond_7
++     invoke-static {p0, v11}, Landroid/view/inputmethod/InputMethodManager$Injector;->handleBindLose(Landroid/view/inputmethod/InputMethodManager;Lcom/android/internal/view/InputBindResult;)V
++ 
+      iget-object v1, p0, Landroid/view/inputmethod/InputMethodManager;->mCurMethod:Lcom/android/internal/view/IInputMethodSession;
+  
+      if-eqz v1, :cond_8

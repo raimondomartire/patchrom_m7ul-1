@@ -1,0 +1,25 @@
+*** IStatusBarService.smali	2013-08-21 11:30:23.304590655 -0700
+--- IStatusBarService.smali	2013-08-21 11:29:19.585547312 -0700
+***************
+*** 163,168 ****
+      .end annotation
+  .end method
+  
+  .method public abstract setSystemUiVisibility(II)V
+      .annotation system Ldalvik/annotation/Throws;
+          value = {
+--- 163,176 ----
+      .end annotation
+  .end method
+  
++ .method public abstract setStatus(ILandroid/os/IBinder;Ljava/lang/String;Landroid/os/Bundle;)V
++     .annotation system Ldalvik/annotation/Throws;
++         value = {
++             Landroid/os/RemoteException;
++         }
++     .end annotation
++ .end method
++ 
+  .method public abstract setSystemUiVisibility(II)V
+      .annotation system Ldalvik/annotation/Throws;
+          value = {

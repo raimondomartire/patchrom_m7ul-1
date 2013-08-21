@@ -1,0 +1,65 @@
+*** ActionMenuView.smali	2013-08-21 11:30:18.850420624 -0700
+--- ActionMenuView.smali	2013-08-21 11:29:14.859244700 -0700
+***************
+*** 11,17 ****
+  .annotation system Ldalvik/annotation/MemberClasses;
+      value = {
+          Lcom/android/internal/view/menu/ActionMenuView$LayoutParams;,
+!         Lcom/android/internal/view/menu/ActionMenuView$ActionMenuChildView;
+      }
+  .end annotation
+  
+--- 11,18 ----
+  .annotation system Ldalvik/annotation/MemberClasses;
+      value = {
+          Lcom/android/internal/view/menu/ActionMenuView$LayoutParams;,
+!         Lcom/android/internal/view/menu/ActionMenuView$ActionMenuChildView;,
+!         Lcom/android/internal/view/menu/ActionMenuView$Injector;
+      }
+  .end annotation
+  
+***************
+*** 1821,1826 ****
+      .parameter "top"
+      .parameter "right"
+      .parameter "bottom"
+  
+      .prologue
+      move-object/from16 v0, p0
+--- 1822,1830 ----
+      .parameter "top"
+      .parameter "right"
+      .parameter "bottom"
++     .annotation build Landroid/annotation/MiuiHook;
++         value = .enum Landroid/annotation/MiuiHook$MiuiHookType;->CHANGE_CODE:Landroid/annotation/MiuiHook$MiuiHookType;
++     .end annotation
+  
+      .prologue
+      move-object/from16 v0, p0
+***************
+*** 2098,2103 ****
+  
+      invoke-virtual {v0, v11, v1, v2, v3}, Landroid/view/View;->layout(IIII)V
+  
+      goto/16 :goto_0
+  
+      .end local v9           #height:I
+--- 2102,2119 ----
+  
+      invoke-virtual {v0, v11, v1, v2, v3}, Landroid/view/View;->layout(IIII)V
+  
++     move-object/from16 v0, v25
++ 
++     move/from16 v1, p2
++ 
++     move/from16 v2, v24
++ 
++     move/from16 v3, p4
++ 
++     move/from16 v4, p5
++ 
++     invoke-static {v0, v1, v2, v3, v4}, Lcom/android/internal/view/menu/ActionMenuView$Injector;->layout(Landroid/view/View;IIII)V
++ 
+      goto/16 :goto_0
+  
+      .end local v9           #height:I

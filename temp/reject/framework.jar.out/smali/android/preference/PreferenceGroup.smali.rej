@@ -1,0 +1,19 @@
+*** PreferenceGroup.smali	2013-08-21 11:29:43.637265092 -0700
+--- PreferenceGroup.smali	2013-08-21 11:28:42.579518308 -0700
+***************
+*** 257,262 ****
+      :cond_5
+      invoke-virtual {p0}, Landroid/preference/PreferenceGroup;->notifyHierarchyChanged()V
+  
+      move v1, v2
+  
+      goto :goto_0
+--- 257,264 ----
+      :cond_5
+      invoke-virtual {p0}, Landroid/preference/PreferenceGroup;->notifyHierarchyChanged()V
+  
++     invoke-virtual {p1, p0}, Landroid/preference/Preference;->setParent(Landroid/preference/PreferenceGroup;)V
++ 
+      move v1, v2
+  
+      goto :goto_0

@@ -1,0 +1,24 @@
+*** NfcManager.smali	2013-08-21 11:30:00.509485085 -0700
+--- NfcManager.smali	2013-08-21 11:28:58.059059801 -0700
+***************
+*** 64,66 ****
+  
+      return-object v0
+  .end method
+--- 64,79 ----
+  
+      return-object v0
+  .end method
++ 
++ .method public setPollDuration(I)I
++     .locals 1
++     .parameter "pollDurationMs"
++     .annotation build Landroid/annotation/MiuiHook;
++         value = .enum Landroid/annotation/MiuiHook$MiuiHookType;->NEW_METHOD:Landroid/annotation/MiuiHook$MiuiHookType;
++     .end annotation
++ 
++     .prologue
++     const/4 v0, 0x0
++ 
++     return v0
++ .end method

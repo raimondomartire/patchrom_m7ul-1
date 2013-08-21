@@ -1,0 +1,62 @@
+*** DateFormat.smali	2013-08-21 11:30:09.978098108 -0700
+--- DateFormat.smali	2013-08-21 11:29:07.255540243 -0700
+***************
+*** 3,8 ****
+  .source "DateFormat.java"
+  
+  
+  # static fields
+  .field public static final AM_PM:C = 'a'
+  
+--- 3,16 ----
+  .source "DateFormat.java"
+  
+  
++ # annotations
++ .annotation system Ldalvik/annotation/MemberClasses;
++     value = {
++         Landroid/text/format/DateFormat$Injector;
++     }
++ .end annotation
++ 
++ 
+  # static fields
+  .field public static final AM_PM:C = 'a'
+  
+***************
+*** 1140,1145 ****
+  .method public static is24HourFormat(Landroid/content/Context;)Z
+      .locals 9
+      .parameter "context"
+  
+      .prologue
+      const/4 v6, 0x0
+--- 1148,1156 ----
+  .method public static is24HourFormat(Landroid/content/Context;)Z
+      .locals 9
+      .parameter "context"
++     .annotation build Landroid/annotation/MiuiHook;
++         value = .enum Landroid/annotation/MiuiHook$MiuiHookType;->CHANGE_CODE:Landroid/annotation/MiuiHook$MiuiHookType;
++     .end annotation
+  
+      .prologue
+      const/4 v6, 0x0
+***************
+*** 1157,1162 ****
+      move-result-object v5
+  
+      .local v5, value:Ljava/lang/String;
+      if-nez v5, :cond_1
+  
+      invoke-virtual {p0}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
+--- 1168,1177 ----
+      move-result-object v5
+  
+      .local v5, value:Ljava/lang/String;
++     invoke-static {p0, v5}, Landroid/text/format/DateFormat$Injector;->check24HourFormatForChina(Landroid/content/Context;Ljava/lang/String;)Ljava/lang/String;
++ 
++     move-result-object v5
++ 
+      if-nez v5, :cond_1
+  
+      invoke-virtual {p0}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
